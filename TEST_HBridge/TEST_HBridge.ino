@@ -1,3 +1,7 @@
+// H-Bridge Test
+// Moves: Stop, Forward, Backwards, Turn Right, Turn Left
+
+
 #define Stop            1
 #define MoveForward     2
 #define MoveBackwards   3
@@ -46,5 +50,10 @@ void setup ()
 
 void loop ()
 {
-  
+  for (int i=1; i<6; i++)
+  {
+    Movement = i;
+    Move();
+    delay(1000);
+  }
 }
