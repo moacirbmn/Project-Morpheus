@@ -1,37 +1,51 @@
-#define MoveForward     1
-#define MoveBackwards   2
-#define TurnLeft        3
-#define TurnRight       4
+#define Stop            1
+#define MoveForward     2
+#define MoveBackwards   3
+#define TurnLeft        4
+#define TurnRight       5
 
-int movement;
+// ---- Componente      Porta ----
+int Relay1         = 3;
+int Relay2         = 4;
+int Relay3         = 5;
+int Relay4         = 6;
+
+int Movement = 0;
 int HBridge [4];
-
-
-void setup () 
-{
-  
-}
-
-void loop ()
-{
-  
-}
-
-// --- Function List ---
-
-void Move ();
 
 
 // --- Functions ---
 
 void Move ()
 {
-  switch (movement)
+  switch (Movement)
   {
-    case MoveForward:   HBridge = [1,0,1,0];
-    case MoveBackwards: HBridge = [0,1,0,1];
-    case TurnLeft:      HBridge = [1,0,1,0];
-    case TurnRight:     HBridge = [0,1,1,0];
+    case Stop:          HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 0; break;
+    case MoveForward:   HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
+    case MoveBackwards: HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
+    case TurnLeft:      HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case TurnRight:     HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
   }
+
+  digitalWrite(Relay1, HBridge[0]);
+  digitalWrite(Relay2, HBridge[1]);
+  digitalWrite(Relay3, HBridge[2]);
+  digitalWrite(Relay4, HBridge[3]);
+}
+
+
+// --- Main Functions ---
+
+void setup () 
+{
+  pinMode (Relay1, OUTPUT);
+  pinMode (Relay2, OUTPUT);
+  pinMode (Relay3, OUTPUT);
+  pinMode (Relay4, OUTPUT);
+}
+
+void loop ()
+{
+  
 }
 
