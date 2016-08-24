@@ -4,17 +4,26 @@
 #define TurnLeft        4
 #define TurnRight       5
 
-// ---- Componente      Porta ----
+// ---- Component / Pin ----
+
 int Relay1         = 3;
 int Relay2         = 4;
 int Relay3         = 5;
 int Relay4         = 6;
 
+int LineL          = 1;
+int LineR          = 2;
+int LineC          = 3;
+
+// ---- Variables ----
+
 int Movement = 0;
 int HBridge [4];
 
+float SenseLimit;
 
-// --- Functions ---
+
+// --- Auxiliar Functions ---
 
 void Move ()
 {
@@ -42,6 +51,13 @@ void setup ()
   pinMode (Relay2, OUTPUT);
   pinMode (Relay3, OUTPUT);
   pinMode (Relay4, OUTPUT);
+
+  SenseLimit = (analogRead(LineL)*2);
+  delay(1000);
+  delay(1000);
+  delay(1000);
+  delay(1000);
+  delay(750);
 }
 
 void loop ()
