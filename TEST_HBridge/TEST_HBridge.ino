@@ -50,10 +50,12 @@ void setup ()
 
 void loop ()
 {
-  for (int i=1; i<6; i++)
+  for (int i=2; i<6; i++)
   {
     Movement = i;
     Move();
-    delay(1000);
+    delay(3000);
+    Movement = 1;
+    delay(2000);
   }
 }
