@@ -1,19 +1,21 @@
+// ---- Movements ----
+
 #define Stop            1
 #define MoveForward     2
 #define MoveBackwards   3
 #define TurnLeft        4
 #define TurnRight       5
 
-// ---- Component / Pin ----
+// ---- Component  /  Pin ----
 
-int Relay1         = 3;
-int Relay2         = 4;
-int Relay3         = 5;
-int Relay4         = 6;
+#define Relay1          3
+#define Relay2          4
+#define Relay3          5
+#define Relay4          6
 
-int LineL          = 1;
-int LineR          = 2;
-int LineC          = 3;
+#define LineL           1
+#define LineR           2
+#define LineC           3
 
 // ---- Variables ----
 
@@ -45,6 +47,10 @@ void Move ()
   digitalWrite(Relay4, HBridge[3]);
 }
 
+void Sense ();
+
+void Think ();
+
 
 // --- Main Functions ---
 
@@ -55,7 +61,8 @@ void setup ()
   pinMode (Relay3, OUTPUT);
   pinMode (Relay4, OUTPUT);
 
-  SenseLimit = (analogRead(LineC)*2);
+  SenseC = analogRead(LineC);
+  SenseLimit = (SenseC+SenseC*2);
   
   delay(1000);
   delay(1000);
