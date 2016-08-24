@@ -8,11 +8,12 @@
 #define TurnLeft        4
 #define TurnRight       5
 
-// ---- Componente      Porta ----
-int Relay1         = 3;
-int Relay2         = 4;
-int Relay3         = 5;
-int Relay4         = 6;
+// ---- Component  /  Pin ----
+
+#define Relay1          3
+#define Relay2          4
+#define Relay3          5
+#define Relay4          6
 
 int Movement = 0;
 int HBridge [4];

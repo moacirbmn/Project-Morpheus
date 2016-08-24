@@ -1,9 +1,9 @@
 // Line Sensors Test
 // Calibrate sensors, waits 4.75 seconds and prints sensor values 
 
-int LineL          = 1;
-int LineR          = 2;
-int LineC          = 3;
+#define LineL        1
+#define LineR        2
+#define LineC        3
 
 float SenseLimit;
 float SenseL;
