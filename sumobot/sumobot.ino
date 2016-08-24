@@ -21,6 +21,9 @@ int Movement = 0;
 int HBridge [4];
 
 float SenseLimit;
+float SenseL;
+float SenseR;
+float SenseC;
 
 
 // --- Auxiliar Functions ---
@@ -52,7 +55,8 @@ void setup ()
   pinMode (Relay3, OUTPUT);
   pinMode (Relay4, OUTPUT);
 
-  SenseLimit = (analogRead(LineL)*2);
+  SenseLimit = (analogRead(LineC)*2);
+  
   delay(1000);
   delay(1000);
   delay(1000);
