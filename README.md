@@ -7,10 +7,10 @@ Author: Carlos André de M. Teixeira
 
 ### H Bridge Matrix
 
-Relay | 1 2 3 4
------------- | -------------
-Stop | 0 0 0 0
-MoveForward | 1 0 1 0
-MoveBackwards | 0 1 0 1
-TurnLeft | 1 0 0 1
-TurnRight | 0 1 1 0
+Relay 		| 1 2 3 4
+   ------------ | -------------
+Stop 		| 0 0 0 0
+MoveForward 	| 1 0 1 0
+MoveBackwards   | 0 1 0 1
+TurnLeft 	| 1 0 0 1
+TurnRight       | 0 1 1 0
