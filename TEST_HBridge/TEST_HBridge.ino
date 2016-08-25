@@ -57,6 +57,7 @@ void loop ()
     Move();
     delay(3000);
     Movement = 1;
+    Move();
     delay(2000);
   }
 }
