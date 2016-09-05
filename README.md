@@ -31,5 +31,7 @@ MoveForward 	| 1 0 1 0
 MoveBackwards   | 0 1 0 1
 TurnLeft 	| 1 0 0 1
 TurnRight       | 0 1 1 0
+RotateLeft	| 1 0 0 0
+RotateRight	| 0 0 0 1
 
 
