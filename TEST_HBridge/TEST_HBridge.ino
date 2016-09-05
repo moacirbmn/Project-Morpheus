@@ -7,6 +7,8 @@
 #define MoveBackwards   3
 #define TurnLeft        4
 #define TurnRight       5
+#define RotateLeft      6
+#define RotateRight     7
 
 // ---- Component  /  Pin ----
 
@@ -30,6 +32,8 @@ void Move ()
     case MoveBackwards: HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
     case TurnLeft:      HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
     case TurnRight:     HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
+    case RotateLeft:    HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
+    case RotateRight:    HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 0; break;
   }
 
   digitalWrite(Relay1, HBridge[0]);
@@ -51,7 +55,7 @@ void setup ()
 
 void loop ()
 {
-  for (int i=2; i<6; i++)
+  for (int i=2; i<8; i++)
   {
     Movement = i;
     Move();
