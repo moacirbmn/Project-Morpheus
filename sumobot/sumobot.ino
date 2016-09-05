@@ -13,9 +13,14 @@
 #define Relay3          5
 #define Relay4          6
 
-#define LineL           1
-#define LineR           2
-#define LineC           3
+#define InfraF          7
+#define UltraF          8
+#define UltraL          9
+#define UltraR          10
+
+#define LineL           A1
+#define LineR           A2
+#define LineC           A3
 
 // ---- Variables ----
 

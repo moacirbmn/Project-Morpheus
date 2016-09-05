@@ -1,9 +1,9 @@
 // Line Sensors Test
 // Calibrate sensors, waits 4.75 seconds and prints sensor values 
 
-#define LineL        1
-#define LineR        2
-#define LineC        3
+#define LineL        A1
+#define LineR        A2
+#define LineC        A3
 
 float SenseLimit;
 float SenseL;

@@ -1,4 +1,4 @@
-# Sumobot
+﻿# Sumobot
 
 Arduino code for a sumo robot project.
 Author: Carlos André de M. Teixeira
@@ -13,6 +13,10 @@ Relay1		|	D3
 Relay2		|	D4
 Relay3		|	D5
 Relay4		|	D6
+InfraF		|	D7
+UltraF		|	D8
+UltraL		|	D9
+UltraR		| 	D10
 LineL		|	A1
 LineR		|	A2
 LineC		|	A3
