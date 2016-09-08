@@ -5,7 +5,9 @@
 #define LineR        A2
 #define LineC        A3
 
-float SenseLimit;
+float SenseLimitL;
+float SenseLimitR;
+float SenseLimitC;
 float SenseL;
 float SenseR;
 float SenseC;
@@ -13,8 +15,10 @@ float SenseC;
 void setup()
 {
   Serial.begin(9600);
-  
-  SenseLimit = (analogRead(LineC)*2);
+
+  SenseLimitL = (analogRead(LineL) + analogRead(LineL)/2);
+  SenseLimitR = (analogRead(LineR) + analogRead(LineR)/2);
+  SenseLimitC = (analogRead(LineC) + analogRead(LineC)/2);
   Serial.print("Sensor Value: ");
   Serial.println(LineC);
   
@@ -35,7 +39,7 @@ void loop()
   Serial.print("Left Sensor: ");
   SenseL = analogRead(LineL);
   Serial.println(SenseL);
-  if (SenseL > SenseLimit)
+  if (SenseL < SenseLimitL)
   {
     Serial.print(", Branco!\n");
   } else {
@@ -45,7 +49,7 @@ void loop()
   Serial.print("Right Sensor: ");
   SenseR = analogRead(LineR);
   Serial.println(SenseR);
-  if (SenseR > SenseLimit)
+  if (SenseR < SenseLimitR)
   {
     Serial.print(", Branco!\n");
   } else {
@@ -55,7 +59,7 @@ void loop()
   Serial.print("Center Sensor: ");
   SenseC = analogRead(LineC);
   Serial.println(SenseC);
-  if (SenseC > SenseLimit)
+  if (SenseC < SenseLimitC)
   {
     Serial.print(", Branco!\n");
   } else {
