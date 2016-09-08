@@ -10,15 +10,14 @@
 
 // ---- Component  /  Pin ----
 
-#define Relay1          3
-#define Relay2          4
-#define Relay3          5
-#define Relay4          6
+#define Relay1          2
+#define Relay2          3
+#define Relay3          4
+#define Relay4          5
 
 #define InfraF          7
 #define UltraF          8
-#define UltraL          9
-#define UltraR          10
+#define UltraF2         9
 
 #define LineL           A1
 #define LineR           A2
@@ -42,12 +41,12 @@ void Move ()
   switch (Movement)
   {
     case Stop:          HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 0; break;
-    case MoveForward:   HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
-    case MoveBackwards: HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
-    case TurnLeft:      HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
-    case TurnRight:     HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
-    case RotateLeft:    HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
-    case RotateRight:    HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 0; break;
+    case MoveForward:   HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
+    case MoveBackwards: HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
+    case TurnLeft:      HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case TurnRight:     HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 0; break;
+    case RotateLeft:    HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
+    case RotateRight:   HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
   }
 
   digitalWrite(Relay1, HBridge[0]);

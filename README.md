@@ -9,10 +9,10 @@ Author: Carlos André de M. Teixeira
 
 Component	| Pin
    ------------ | -------------
-Relay1		|	D3
-Relay2		|	D4
-Relay3		|	D5
-Relay4		|	D6
+Relay1		|	D2
+Relay2		|	D3
+Relay3		|	D4
+Relay4		|	D5
 InfraF		|	D7
 UltraF		|	D8
 UltraL		|	D9
@@ -27,11 +27,11 @@ LineC		|	A3
 Relay 		| 1 2 3 4
    ------------ | -------------
 Stop 		| 0 0 0 0
-MoveForward 	| 1 0 1 0
-MoveBackwards   | 0 1 0 1
-TurnLeft 	| 1 0 0 1
-TurnRight       | 0 1 1 0
-RotateLeft	| 1 0 0 0
-RotateRight	| 0 0 0 1
+MoveForward 	| 0 1 0 1
+MoveBackwards   | 1 0 1 0
+TurnLeft 	| 0 0 0 1
+TurnRight       | 1 0 0 0
+RotateLeft	| 0 1 1 0
+RotateRight	| 1 0 0 1
 
 
