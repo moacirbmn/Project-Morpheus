@@ -14,9 +14,12 @@ Relay2		|	D3
 Relay3		|	D4
 Relay4		|	D5
 InfraF		|	D7
-UltraF		|	D8
-UltraL		|	D9
-UltraR		| 	D10
+UltraF_trig	|	D8
+UltraF_echo	|	D9
+UltraL_trig	|	D10
+UltraL_echo	|	D11
+UltraR_trig	| 	D12
+UltraR_echo	| 	D13
 LineL		|	A1
 LineR		|	A2
 LineC		|	A3
