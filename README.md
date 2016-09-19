@@ -20,9 +20,9 @@ UltraL_trig	|	D10
 UltraL_echo	|	D11
 UltraR_trig	| 	D12
 UltraR_echo	| 	D13
-LineL		|	A1
-LineR		|	A2
-LineC		|	A3
+LineL		|	A3
+LineR		|	A4
+LineC		|	A5
 
 
 ### H Bridge Matrix
@@ -33,8 +33,8 @@ Stop 		| 0 0 0 0
 MoveForward 	| 0 1 0 1
 MoveBackwards   | 1 0 1 0
 TurnLeft 	| 0 0 0 1
-TurnRight       | 1 0 0 0
-RotateLeft	| 0 1 1 0
-RotateRight	| 1 0 0 1
+TurnRight       | 0 1 0 0
+RotateLeft	| 1 0 0 1
+RotateRight	| 0 1 1 0
 
 
