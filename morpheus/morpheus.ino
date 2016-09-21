@@ -36,6 +36,7 @@
 int Movement = 0;
 int HBridge [4];
 int Infra;
+int State;
 
 float SenseLimitL;
 float SenseLimitR;
@@ -44,6 +45,41 @@ float SenseL;
 float SenseR;
 float SenseC;
 float UltraF;
+
+Ultrasonic ultrasonic(UltraF_T, UltraF_E);
+
+
+  
+// --- Main Functions ---
+
+void setup () 
+{
+  pinMode (Relay1, OUTPUT);
+  pinMode (Relay2, OUTPUT);
+  pinMode (Relay3, OUTPUT);
+  pinMode (Relay4, OUTPUT);
+
+  pinMode (InfraF, INPUT);
+
+  SensorSetup();
+  State = Search;
+  
+  delay(1000);
+  delay(1000);
+  delay(1000);
+  delay(1000);
+  delay(750);
+}
+
+void loop ()
+{
+  Sense();
+//  Think();
+  Move();
+  delay(15);
+}
+
+
 
 
 // --- Auxiliar Functions ---
@@ -88,40 +124,12 @@ void Sense ()
   long microsec = ultrasonic.timing();
   UltraF = ultrasonic.convert(microsec, Ultrasonic::CM);
 
-  InfraF = digitalRead(Infra);
+  Infra = digitalRead(InfraF);
 }
 
 void Think ();
-
-
-// --- Main Functions ---
-
-void setup () 
 {
-  pinMode (Relay1, OUTPUT);
-  pinMode (Relay2, OUTPUT);
-  pinMode (Relay3, OUTPUT);
-  pinMode (Relay4, OUTPUT);
-
-  pinMode (InfraF, INPUT);
-  pinMode (UltraF, INPUT);
-  pinMode (UltraL, INPUT);
-  pinMode (UltraR, INPUT);
-
-  SensorSetup();
   
-  delay(1000);
-  delay(1000);
-  delay(1000);
-  delay(1000);
-  delay(750);
 }
 
-void loop ()
-{
-  Sense();
-  Think();
-  Move();
-  delay(15);
-}
 
