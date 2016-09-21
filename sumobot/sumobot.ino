@@ -12,7 +12,9 @@
 
 // ---- States ----
 
-#define 
+#define Search 1
+#define Escape 2
+#define Attack 3
 
 // ---- Component  /  Pin ----
 
@@ -117,6 +119,9 @@ void setup ()
 
 void loop ()
 {
-  
+  Sense();
+  Think();
+  Move();
+  delay(15);
 }
 
