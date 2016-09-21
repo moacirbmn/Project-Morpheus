@@ -1,6 +1,7 @@
 // H-Bridge Test
 // Moves: Stop, Forward, Backwards, Turn Right, Turn Left
 
+// ---- Movements ----
 
 #define Stop            1
 #define MoveForward     2
@@ -17,6 +18,16 @@
 #define Relay3          4
 #define Relay4          5
 
+#define InfraF          7
+#define UltraF_T        12
+#define UltraF_E        13
+
+#define LineL           A1
+#define LineR           A2
+#define LineC           A3
+
+// ---- Variables ----
+
 int Movement = 0;
 int HBridge [4];
 
@@ -31,9 +42,9 @@ void Move ()
     case MoveForward:   HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
     case MoveBackwards: HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
     case TurnLeft:      HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
-    case TurnRight:     HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 0; break;
-    case RotateLeft:    HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
-    case RotateRight:   HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case TurnRight:     HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 0; break;
+    case RotateLeft:    HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case RotateRight:   HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
   }
 
   digitalWrite(Relay1, HBridge[0]);
@@ -59,7 +70,7 @@ void loop ()
   {
     Movement = i;
     Move();
-    delay(1500);
+    delay(1000);
     Movement = 1;
     Move();
     delay(1500);

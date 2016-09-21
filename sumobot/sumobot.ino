@@ -1,3 +1,5 @@
+#include <Ultrasonic.h>
+
 // ---- Movements ----
 
 #define Stop            1
@@ -16,8 +18,8 @@
 #define Relay4          5
 
 #define InfraF          7
-#define UltraF          8
-#define UltraF2         9
+#define UltraF_T        12
+#define UltraF_E        13
 
 #define LineL           A1
 #define LineR           A2
@@ -28,7 +30,9 @@
 int Movement = 0;
 int HBridge [4];
 
-float SenseLimit;
+float SenseLimitL;
+float SenseLimitR;
+float SenseLimitC;
 float SenseL;
 float SenseR;
 float SenseC;
@@ -44,9 +48,9 @@ void Move ()
     case MoveForward:   HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 1; break;
     case MoveBackwards: HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 1; HBridge[3] = 0; break;
     case TurnLeft:      HBridge[0] = 0; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
-    case TurnRight:     HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 0; break;
-    case RotateLeft:    HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
-    case RotateRight:   HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case TurnRight:     HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 0; HBridge[3] = 0; break;
+    case RotateLeft:    HBridge[0] = 1; HBridge[1] = 0; HBridge[2] = 0; HBridge[3] = 1; break;
+    case RotateRight:   HBridge[0] = 0; HBridge[1] = 1; HBridge[2] = 1; HBridge[3] = 0; break;
   }
 
   digitalWrite(Relay1, HBridge[0]);

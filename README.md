@@ -14,15 +14,11 @@ Relay2		|	D3
 Relay3		|	D4
 Relay4		|	D5
 InfraF		|	D7
-UltraF_trig	|	D8
-UltraF_echo	|	D9
-UltraL_trig	|	D10
-UltraL_echo	|	D11
-UltraR_trig	| 	D12
-UltraR_echo	| 	D13
+UltraF_T	| 	D12
+UltraF_E	| 	D13
+LineR		|	A1
+LineC		|	A2
 LineL		|	A3
-LineR		|	A4
-LineC		|	A5
 
 
 ### H Bridge Matrix
