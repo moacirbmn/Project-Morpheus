@@ -14,8 +14,8 @@ Relay2		|	D3
 Relay3		|	D4
 Relay4		|	D5
 InfraF		|	D7
-UltraF_T	| 	D12
-UltraF_E	| 	D13
+UltraF_E	| 	D12
+UltraF_T	| 	D13
 LineR		|	A1
 LineC		|	A2
 LineL		|	A3

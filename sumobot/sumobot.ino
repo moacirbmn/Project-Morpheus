@@ -10,6 +10,10 @@
 #define RotateLeft      6
 #define RotateRight     7
 
+// ---- States ----
+
+#define 
+
 // ---- Component  /  Pin ----
 
 #define Relay1          2
@@ -18,17 +22,18 @@
 #define Relay4          5
 
 #define InfraF          7
-#define UltraF_T        12
-#define UltraF_E        13
+#define UltraF_E        12
+#define UltraF_T        13
 
-#define LineL           A1
-#define LineR           A2
-#define LineC           A3
+#define LineR           A1
+#define LineC           A2
+#define LineL           A3
 
 // ---- Variables ----
 
 int Movement = 0;
 int HBridge [4];
+int Infra;
 
 float SenseLimitL;
 float SenseLimitR;
@@ -36,6 +41,7 @@ float SenseLimitC;
 float SenseL;
 float SenseR;
 float SenseC;
+float UltraF;
 
 
 // --- Auxiliar Functions ---
@@ -59,7 +65,29 @@ void Move ()
   digitalWrite(Relay4, HBridge[3]);
 }
 
-void Sense ();
+void SensorSetup()
+{
+  SenseC = analogRead(LineC);
+  SenseLimitC = (SenseC-SenseC/2);
+  SenseR = analogRead(LineR);
+  SenseLimitR = (SenseR-SenseR/2);
+  SenseL = analogRead(LineL);
+  SenseLimitL = (SenseL-SenseL/2);
+
+  Ultrasonic ultrasonic(UltraF_T, UltraF_E);
+}
+
+void Sense ()
+{
+  SenseR = analogRead(LineR);
+  SenseL = analogRead(LineL);
+  SenseC = analogRead(LineC);
+
+  long microsec = ultrasonic.timing();
+  UltraF = ultrasonic.convert(microsec, Ultrasonic::CM);
+
+  InfraF = digitalRead(Infra);
+}
 
 void Think ();
 
@@ -78,8 +106,7 @@ void setup ()
   pinMode (UltraL, INPUT);
   pinMode (UltraR, INPUT);
 
-  SenseC = analogRead(LineC);
-  SenseLimit = (SenseC+SenseC*2);
+  SensorSetup();
   
   delay(1000);
   delay(1000);
