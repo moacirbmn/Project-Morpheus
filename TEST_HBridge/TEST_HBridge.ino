@@ -55,13 +55,10 @@ void setup ()
 
 void loop ()
 {
-  for (int i=2; i<8; i++)
-  {
-    Movement = i;
-    Move();
-    delay(1500);
-    Movement = 1;
-    Move();
-    delay(1500);
-  }
+  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay2, LOW);
+  digitalWrite(Relay3, LOW);
+  digitalWrite(Relay4, HIGH);
+
+  delay(2000);
 }

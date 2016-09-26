@@ -27,9 +27,9 @@
 #define UltraF_E        12
 #define UltraF_T        13
 
-#define LineR           A1
-#define LineC           A2
-#define LineL           A3
+#define LineR           1
+#define LineC           2
+#define LineL           3
 
 // ---- Variables ----
 
@@ -47,8 +47,6 @@ float SenseC;
 float UltraF;
 
 Ultrasonic ultrasonic(UltraF_T, UltraF_E);
-
-
   
 // --- Main Functions ---
 
@@ -74,13 +72,10 @@ void setup ()
 void loop ()
 {
   Sense();
-//  Think();
+  Think();
   Move();
   delay(15);
 }
-
-
-
 
 // --- Auxiliar Functions ---
 
@@ -106,11 +101,11 @@ void Move ()
 void SensorSetup()
 {
   SenseC = analogRead(LineC);
-  SenseLimitC = (SenseC-SenseC/2);
+  SenseLimitC = (SenseC+SenseC/3);
   SenseR = analogRead(LineR);
-  SenseLimitR = (SenseR-SenseR/2);
+  SenseLimitR = (SenseR+SenseR/3);
   SenseL = analogRead(LineL);
-  SenseLimitL = (SenseL-SenseL/2);
+  SenseLimitL = (SenseL+SenseL/3);
 
   Ultrasonic ultrasonic(UltraF_T, UltraF_E);
 }
@@ -127,7 +122,31 @@ void Sense ()
   Infra = digitalRead(InfraF);
 }
 
-void Think ();
+void BackLeft ()
 {
-  
+  Movement = TurnLeft;
+  Move();
+  delay(600);
+  Movement = MoveForward;
+}
+
+void BackRight ()
+{
+  Movement = TurnRight;
+  Move();
+  delay(600);
+  Movement = MoveForward;
+}
+
+void Think ()
+{
+  if (((SenseL>SenseLimitL) || (SenseR>SenseLimitR)) && (State == Search))
+  {
+    if(SenseL>SenseLimitL)
+    {
+      BackLeft();
+    } else if (SenseR>SenseLimitR){
+      BackRight();
+    }
+  }
 }

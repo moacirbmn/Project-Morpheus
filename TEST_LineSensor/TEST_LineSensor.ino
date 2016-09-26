@@ -1,9 +1,9 @@
 // Line Sensors Test
 // Calibrate sensors, waits 4.75 seconds and prints sensor values 
 
-#define LineL        1
-#define LineR        2
-#define LineC        3
+#define LineR           1
+#define LineC           2
+#define LineL           3
 
 float SenseLimitL;
 float SenseLimitR;
@@ -16,11 +16,9 @@ void setup()
 {
   Serial.begin(9600);
 
-  SenseLimitL = (analogRead(LineL) + analogRead(LineL)/2);
-  SenseLimitR = (analogRead(LineR) + analogRead(LineR)/2);
-  SenseLimitC = (analogRead(LineC) + analogRead(LineC)/2);
-  Serial.print("Sensor Value: ");
-  Serial.println(LineC);
+  SenseLimitL = (analogRead(LineL) + analogRead(LineL)/3);
+  SenseLimitR = (analogRead(LineR) + analogRead(LineR)/3);
+  SenseLimitC = (analogRead(LineC) + analogRead(LineC)/3);
   
   delay(1000);
   Serial.print("\n 1");
