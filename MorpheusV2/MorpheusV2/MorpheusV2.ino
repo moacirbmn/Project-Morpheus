@@ -59,7 +59,7 @@ void timerDesloc(struct Timer * timer, unsigned long Time) {
 Timer TimerEdge = {0, 10};     // Checks edges every 10ms
 Timer TimerFound = {0, 100};   // Looks for enemies every 100ms
 Timer TimerForward = {0, 800}; // MoveForward time
-Timer TimerSpin = {0, 3243};   // Spin time
+Timer TimerSpin = {0, 3200};   // Spin time
 Timer TimerEnd = {0, 85000};   // Round is over after 1min and 30seconds
 boolean SpinDirection = true;  // Spin direction
 
@@ -89,11 +89,11 @@ void setup() {
 void SensorSetup()
 {
   SenseC = analogRead(LineC);
-  SenseLimitC = (SenseC + SenseC / 2.5);
+  SenseLimitC = (SenseC - SenseC / 2);
   SenseR = analogRead(LineR);
-  SenseLimitR = (SenseR + SenseR / 2.5);
+  SenseLimitR = (SenseR - SenseR / 2);
   SenseL = analogRead(LineL);
-  SenseLimitL = (SenseL + SenseL / 2.5);
+  SenseLimitL = (SenseL - SenseL / 2);
 }
 
 
@@ -125,10 +125,10 @@ void loop()
 
   if (TimerOut(& TimerEdge)) 
   {
-    if ((analogRead(LineR) > SenseLimitR) || (analogRead(LineL) > SenseLimitL)) 
+    if ((analogRead(LineR) < SenseLimitR) || (analogRead(LineL) < SenseLimitL)) 
     { 
       MoveBackwards();
-      delay(750);
+      delay(500);
       timerStart(& TimerForward);
       timerDesloc(& TimerSpin, -TimerSpin.timeout);
       timerStart(& TimerFound);
