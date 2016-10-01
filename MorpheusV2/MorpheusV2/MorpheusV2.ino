@@ -125,7 +125,7 @@ void loop()
 
   if (TimerOut(& TimerEdge)) 
   {
-    if ((analogRead(LineR) < SenseLimitR) || (analogRead(LineL) < SenseLimitL)) 
+    if (((analogRead(LineR) < SenseLimitR) || (analogRead(LineL) < SenseLimitL))||((analogRead(LineR) < SenseLimitR) && (analogRead(LineL) < SenseLimitL))) 
     { 
       MoveBackwards();
       delay(500);
