@@ -58,8 +58,8 @@ void timerDesloc(struct Timer * timer, unsigned long Time) {
 
 Timer TimerEdge = {0, 10};     // Checks edges every 10ms
 Timer TimerFound = {0, 100};   // Looks for enemies every 100ms
-Timer TimerForward = {0, 800}; // MoveForward time
-Timer TimerSpin = {0, 3200};   // Spin time
+Timer TimerSpin = {0, 800}; // MoveForward time
+//Timer TimerSpin = {0, 3200};   // Spin time
 Timer TimerEnd = {0, 85000};   // Round is over after 1min and 30seconds
 boolean SpinDirection = true;  // Spin direction
 
@@ -81,19 +81,21 @@ void setup() {
   delay(1000);
   delay(1000);
   delay(750);
-  TimerForward.start = Now() - TimerForward.timeout;
-  TimerSpin.start = Now();
+  TimerSpin.start = Now() - TimerSpin.timeout;
+  //TimerSpin.start = Now();
   TimerFound.start = Now();
+  MoveForward();
+  delay(500);
 }
 
 void SensorSetup()
 {
   SenseC = analogRead(LineC);
-  SenseLimitC = (SenseC - SenseC / 2);
+  SenseLimitC = (SenseC + SenseC / 1.5);
   SenseR = analogRead(LineR);
-  SenseLimitR = (SenseR - SenseR / 2);
+  SenseLimitR = (SenseR + SenseR / 1.5);
   SenseL = analogRead(LineL);
-  SenseLimitL = (SenseL - SenseL / 2);
+  SenseLimitL = (SenseL + SenseL / 1.5);
 }
 
 
@@ -110,27 +112,38 @@ void loop()
   if (i = 0)
   {
     timerStart(&TimerEdge);
-    timerStart(&TimerSpin);
+//    timerStart(&TimerSpin);
     timerStart(&TimerFound);
     i += 1;
   }
 
-  if (TimerOut(& TimerForward))
+  if (TimerOut(& TimerSpin))
   {
-    MoveForward();
-    timerStart(& TimerForward);
+    LeftSpin();
+    timerStart(& TimerSpin);
     //timerStart(& TimerSpin);
   }
 
 
   if (TimerOut(& TimerEdge)) 
   {
-    if (((analogRead(LineR) < SenseLimitR) || (analogRead(LineL) < SenseLimitL))||((analogRead(LineR) < SenseLimitR) && (analogRead(LineL) < SenseLimitL))) 
+    if ( (analogRead(LineR) > SenseLimitR) ) 
     { 
-      MoveBackwards();
-      delay(500);
-      timerStart(& TimerForward);
-      timerDesloc(& TimerSpin, -TimerSpin.timeout);
+      LeftSpin();
+      delay(750);
+      MoveForward();
+      delay(400);
+      timerStart(& TimerSpin);
+//    timerDesloc(& TimerSpin, -TimerSpin.timeout);
+      timerStart(& TimerFound);
+    } else if ((analogRead(LineL) > SenseLimitL)) 
+    {
+      RightSpin();
+      delay(750);
+      MoveForward();
+      delay(400);
+      timerStart(& TimerSpin);
+//    timerDesloc(& TimerSpin, -TimerSpin.timeout);
       timerStart(& TimerFound);
     }
     timerStart(& TimerEdge);
@@ -140,11 +153,11 @@ void loop()
     if (Found())
     {
       MoveForward();
-      timerStart(& TimerSpin);
+     // timerStart(& TimerSpin);
     }
     timerStart(& TimerFound);
   }
-  if (TimerOut(& TimerSpin)) 
+  /*if (TimerOut(& TimerSpin)) 
   {
     if (SpinDirection) 
     {
@@ -157,7 +170,7 @@ void loop()
       SpinDirection = !SpinDirection;
     }
     timerStart(& TimerSpin);
-  }
+  }*/
 }
 
 
@@ -188,12 +201,12 @@ void RightSpin()
 {
   digitalWrite(Relay1, LOW);
   digitalWrite(Relay2, HIGH);
-  digitalWrite(Relay3, HIGH);
+  digitalWrite(Relay3, LOW);
   digitalWrite(Relay4, LOW);
 }
 void LeftSpin()
 {
-  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay1, LOW);
   digitalWrite(Relay2, LOW);
   digitalWrite(Relay3, LOW);
   digitalWrite(Relay4, HIGH);

@@ -55,8 +55,8 @@ void setup ()
 
 void loop ()
 {
-  digitalWrite(Relay1, HIGH);
-  digitalWrite(Relay2, LOW);
+ digitalWrite(Relay1, LOW);
+  digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, LOW);
   digitalWrite(Relay4, HIGH);
 
